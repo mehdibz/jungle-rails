@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
-  # resources :admin:categories,  only: [:index, :create]
+
 
   resource :cart, only: [:show] do
     put    :add_item
@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, except: [:edit, :update, :show, :destroy]
   end
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
