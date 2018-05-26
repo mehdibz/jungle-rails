@@ -1,11 +1,12 @@
-<section class="orders-show">
-
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
-
-  <div class="order-summary jumbotron">
-    <table class="table table-bordered">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Details of your order: </h1>
+  <div>
+    <table>
       <thead>
         <tr>
           <th colspan="2">Product</th>
@@ -31,6 +32,5 @@
       </tfoot>
     </table>
   </div>
-   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-   <br><br><br>
-</section>
+  </body>
+</html>
