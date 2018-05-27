@@ -1,17 +1,12 @@
 <section class="products-show">
-
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
-
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -24,8 +19,34 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+      <dt>Reviews</dt>
+          <table>
+            <tr>
+              <th>Rating</th><th colspan="2"></th>
+              <th>Description</th>
+            </tr>
+            <% @reviews.each do |item| %>
+              <tr>
+                <td><%= item.rating %></td>
+                <td><%= item.description %></td>
+              </tr>
+            <% end %>
+          </table>
+        <br><br>
+        <% if current_user %>
+        <%= form_for [@product, @review] do |form| %>
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_field :description, class: 'form-control' %>
+        </div>
+        <div class="form-group"> <%= form.label :rating %>  
+          <%= form.select(:rating, options_for_select(
+                      [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]
+          ))%>
+        </div>
+        <%= form.submit 'Submit', class: 'btn btn-primary' %>
+        <% end %>
+        <% end %>
     </div>
-
   </article>
-
 </section>
